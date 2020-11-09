@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import Container from "@material-ui/core/Container";
-import ProductTable from "../ProductTable/ProductTable";
+import ProductTable from "../ProductTable/";
 import { initialProductListWithTypeErrors } from "../../utils/mock";
 import {
   calculateTotalPrice,

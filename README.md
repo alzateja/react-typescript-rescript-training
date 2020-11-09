@@ -1,6 +1,4 @@
-# My Typescript Reason React Tutorial
-
-![Alt Webpack + Babel + React](/src/assets/webpack_babel.png)
+# My Typescript ReScript React Tutorial
 
 This repo is forked from Marcos Lombog's starter repo.
 

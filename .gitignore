@@ -27,3 +27,6 @@ doc/
 
 
 node_modules
+lib/*
+.merlin
+.bsb.lock

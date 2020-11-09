@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import TextField from "@material-ui/core/TextField";
-import ProductActions from "../ProductActions/ProductActions";
+import ProductActions from "../ProductActions/";
 
 const ProductRow = ({
   name,
