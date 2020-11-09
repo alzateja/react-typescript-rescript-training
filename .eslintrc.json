@@ -1,4 +1,15 @@
 {
-    "extends": ["react-app",  "plugin:jsx-a11y/recommended" , "plugin:prettier/recommended" ],
-    "plugins": ["jsx-a11y"]
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "react-app",
+    "plugin:jsx-a11y/recommended" ,
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  "plugins": ["jsx-a11y"],
+  "rules": {
+    //    We turn off this rule to allow for JSX typing
+    "no-empty-interface": 0
   }
+}

@@ -5,28 +5,39 @@ import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import Container from "@material-ui/core/Container";
 import ProductTable from "../ProductTable/";
-import { initialProductListWithTypeErrors } from "../../utils/mock";
 import {
   calculateTotalPrice,
   findIndexAndUpdateQuantity,
 } from "../../utils/cart";
+// Import the basic product details list
+import { productDetails } from "../../constants/product";
+import {
+  DeleteFromCartFunction,
+  UpdateCartFunction,
+  ProductList,
+} from "../../types";
 
-const App = () => {
-  const initialCartValue = "0";
-  const [cart, setCart] = useState(initialProductListWithTypeErrors);
-  const [calculatedPrice, setCalculatedPrice] = useState(initialCartValue);
+const App = (): JSX.Element => {
+  // Looking into the issue it is cause by initial cart Value being a string, so lets change it to a number
+  const initialCartValue = 0;
+  //We also want to type our setSate by using the following notation
+  const [cart, setCart] = useState<ProductList>(productDetails);
+  const [calculatedPrice, setCalculatedPrice] = useState<number>(
+    initialCartValue
+  );
 
-  const deleteFromCart = (id) => {
+  // This file return void since it just invokes a function and does not return a value
+  const deleteFromCart: DeleteFromCartFunction = (id) => {
     const updatedCart = findIndexAndUpdateQuantity(cart, id, 0);
     return setCart(updatedCart);
   };
 
-  const updateCart = (id, value) => {
+  const updateCart: UpdateCartFunction = (id, value) => {
     const updatedCart = findIndexAndUpdateQuantity(cart, id, value);
     return setCart(updatedCart);
   };
 
-  const calculatePrice = () => {
+  const calculatePrice = (): void => {
     const totalPrice = calculateTotalPrice(cart, initialCartValue);
     setCalculatedPrice(totalPrice);
   };

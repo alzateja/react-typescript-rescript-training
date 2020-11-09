@@ -3,6 +3,18 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import TextField from "@material-ui/core/TextField";
 import ProductActions from "../ProductActions/";
+import {
+  Product,
+  DeleteFromCartFunction,
+  UpdateCartFunction,
+} from "../../types";
+
+// One additional feature we can do is extend a type.
+// Since ProductRow has mostly the same props as Product, we can extend that type and additional values..
+interface ProductRowProps extends Product {
+  deleteFromCart: DeleteFromCartFunction;
+  updateCart: UpdateCartFunction;
+}
 
 const ProductRow = ({
   name,
@@ -12,8 +24,8 @@ const ProductRow = ({
   id,
   deleteFromCart,
   updateCart,
-}) => {
-  const [newProductTotal, setNewProductTotal] = useState("");
+}: ProductRowProps): JSX.Element => {
+  const [newProductTotal, setNewProductTotal] = useState<number>(quantity);
   return (
     <TableRow key={name}>
       <TableCell component="th" scope="row">
@@ -27,17 +39,24 @@ const ProductRow = ({
           id="standard-basic"
           value={newProductTotal}
           label="New Quantity"
-          onChange={(e) => setNewProductTotal(e.target.value)}
+          type="number"
+          onChange={
+            //We can type the change event as well.
+            (e: React.ChangeEvent<HTMLInputElement>): void => {
+              const inputAsNumber = parseInt(e.target.value);
+              setNewProductTotal(inputAsNumber);
+            }
+          }
         />
       </TableCell>
       <TableCell align="right">
         <ProductActions
-          deleteFromCartResetField={() => {
-            setNewProductTotal("");
+          deleteFromCartResetField={(): void => {
+            setNewProductTotal(0);
             deleteFromCart(id);
           }}
-          updateCartResetField={() => {
-            setNewProductTotal("");
+          updateCartResetField={(): void => {
+            setNewProductTotal(0);
             updateCart(id, newProductTotal);
           }}
         />

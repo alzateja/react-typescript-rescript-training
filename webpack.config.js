@@ -3,7 +3,9 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    // Once we add our changes, we can make a typescript file an entry point
+    entry: './src/index.tsx',
+    // We add a map to help debug
     devtool: 'inline-source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -12,7 +14,8 @@ module.exports = {
         publicPath: ''
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        // We need to add .tsx and .ts to be resolved
+        extensions: ['.js', '.jsx',  '.tsx', '.ts']
     },
     module: {
         rules: [
@@ -53,7 +56,13 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif)$/,
                 loader: 'url-loader?limit=10000&name=img/[name].[ext]'
-            }
+            },
+            //  Additionally we have to add ts-loader to load our typescript files
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
         ]
     },
     plugins: [
