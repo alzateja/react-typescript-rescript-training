@@ -2,7 +2,7 @@ import { findIndex, get, reduce, matches } from "lodash";
 import { Product, ProductList } from "../types";
 
 // We can now type our functions.
-// This function should takes a product and calculates the price based on the price and quantity.
+// This function should take a product and calculate the price based on the price and quantity.
 // It should return a numeric value
 export const calculateProductPrice = (product: Product): number =>
   get(product, "quantity") * get(product, "price");

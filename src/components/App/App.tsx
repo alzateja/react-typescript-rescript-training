@@ -18,7 +18,7 @@ import {
 } from "../../types";
 
 const App = (): JSX.Element => {
-  // Looking into the issue it is cause by initial cart Value being a string, so lets change it to a number
+  // Looking into the issue, it seems to be caused by the initial cart value being a string, so let's change it to a number
   const initialCartValue = 0;
   //We also want to type our setSate by using the following notation
   const [cart, setCart] = useState<ProductList>(productDetails);
