@@ -3,17 +3,20 @@ let make =
 (~deleteFromCart, ~updateCart, ~name, ~description, ~quantity, ~price, ~id) => {
   open MaterialUi
   let (newProductTotal, setNewProductTotal) = React.useState(_ => 0)
-// We can write a helper to determine whether to render a text element or not
-  let descriptionTextHelper = descriptionText =>
-    descriptionText !== "" ?
-    `: ${descriptionText}` -> React.string
-    : React.null
+
+// we create a function that takes a string option
+// and returns either a React.string or a React.null
+let determineDescriptionElement = text =>
+switch text{
+      |Some(description) =>`: ${description}` -> React.string
+      |None => React.null
+  }
 
   <TableRow key={name}>
     <TableCell scope="row">
       <strong> {name -> React.string} </strong>
-    //   We can handle the optional description value with a helper function
-      {description -> Belt.Option.getWithDefault("") -> descriptionTextHelper}
+//   We can handle the optional description value with our pattern matching!
+      {description -> determineDescriptionElement}
     </TableCell>
     <TableCell align=#Right> {price -> React.float} </TableCell>
     <TableCell align=#Right> {quantity -> React.int} </TableCell>

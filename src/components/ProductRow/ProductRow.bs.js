@@ -2,7 +2,6 @@
 
 import * as Curry from "../../../node_modules/bs-platform/lib/es6/curry.js";
 import * as React from "react";
-import * as Belt_Option from "../../../node_modules/bs-platform/lib/es6/belt_Option.js";
 import * as Core from "@material-ui/core";
 import * as MaterialUi_TextField from "../../../node_modules/@jsiebern/bs-material-ui/src/MaterialUi_TextField.bs.js";
 import * as ProductActions$ReactTypescriptReasonTraining from "../ProductActions/ProductActions.bs.js";
@@ -20,9 +19,9 @@ function ProductRow(Props) {
       });
   var setNewProductTotal = match[1];
   var newProductTotal = match[0];
-  var descriptionTextHelper = function (descriptionText) {
-    if (descriptionText !== "") {
-      return ": " + descriptionText;
+  var determineDescriptionElement = function (text) {
+    if (text !== undefined) {
+      return ": " + text;
     } else {
       return null;
     }
@@ -33,7 +32,7 @@ function ProductRow(Props) {
             }, React.createElement(Core.TableCell, {
                   children: null,
                   scope: "row"
-                }, React.createElement("strong", undefined, name), descriptionTextHelper(Belt_Option.getWithDefault(description, ""))), React.createElement(Core.TableCell, {
+                }, React.createElement("strong", undefined, name), determineDescriptionElement(description)), React.createElement(Core.TableCell, {
                   align: "right",
                   children: price
                 }), React.createElement(Core.TableCell, {
