@@ -3,15 +3,9 @@
 import * as Curry from "../../../node_modules/bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Core from "@material-ui/core";
-import ProductTableJsx from "../ProductTable/ProductTable.jsx";
 import * as Product$ReactTypescriptReasonTraining from "../../constants/Product.bs.js";
 import * as CartUtils$ReactTypescriptReasonTraining from "../../utils/CartUtils.bs.js";
-
-var make = ProductTableJsx;
-
-var ProductTable = {
-  make: make
-};
+import * as ProductTable$ReactTypescriptReasonTraining from "../ProductTable/ProductTable.bs.js";
 
 function App(Props) {
   var match = React.useState(function () {
@@ -45,10 +39,10 @@ function App(Props) {
                   variant: "body1"
                 }), React.createElement(Core.Container, {
                   children: null
-                }, React.createElement(make, {
-                      cart: cart,
+                }, React.createElement(ProductTable$ReactTypescriptReasonTraining.make, {
                       deleteFromCart: deleteFromCart,
-                      updateCart: updateCart
+                      updateCart: updateCart,
+                      cart: cart
                     }), React.createElement(Core.Card, {
                       children: null,
                       className: "shopping-cart"
@@ -65,11 +59,10 @@ function App(Props) {
                         }), React.createElement("h3", undefined, "Your total is"), React.createElement("h3", undefined, match$1[0].toFixed(2)))));
 }
 
-var make$1 = App;
+var make = App;
 
 export {
-  ProductTable ,
-  make$1 as make,
+  make ,
   
 }
-/* make Not a pure module */
+/* react Not a pure module */

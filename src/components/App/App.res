@@ -1,18 +1,6 @@
 // We open Product to type our array and import our productDetails list
 open Product
 
-// We import the ProductTable component
-module ProductTable ={
-     @bs.module("../ProductTable/ProductTable.jsx") @react.component
-  external make: (
-    //   We type our cart as an array of type product from Product
-    ~cart: array<product>,
-    // deleteFromCart and updateCart returns unit (or ()) since they do not return a value but instead invoke a function
-    ~deleteFromCart: string => unit,
-    ~updateCart: (string, int) => unit,
-  ) => React.element = "default"
-}
-
 // Always use the react.component decorator
 @react.component
 let make = () => {
