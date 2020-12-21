@@ -11,10 +11,8 @@ This gets annoying with larger components
   open MaterialUi
   open Icons
   <>
-  /* We pass our color as Primary according to the Reason binding.
-  Spoiler: This is wrong but the compiler will help us
-  */
-    <IconButton color="Primary" onClick={updateCartResetField}>
+  // We pass our color as #Primary according to the compiler
+    <IconButton color=#Primary onClick={updateCartResetField}>
       <AddShoppingCartIcon />
     </IconButton>
     <IconButton onClick={deleteFromCartResetField}>
