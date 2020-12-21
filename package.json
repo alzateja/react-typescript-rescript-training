@@ -14,7 +14,9 @@
     "lint": "eslint --ext .jsx,.js src/ --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --open --hot --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "re:build": "bsb -make-world -clean-world",
+    "re:watch": "bsb -make-world -clean-world -w"
   },
   "license": "MIT",
   "browserslist": "> 1%,last 2 versions",
