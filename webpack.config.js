@@ -3,7 +3,7 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/Index.bs.js',
     devtool: 'inline-source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
